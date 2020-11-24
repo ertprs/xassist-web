@@ -24,3 +24,5 @@ yarn-error.log
 /.editorconfig
 /.env
 /.stylelintcache
+/node_modules
+/*/node_modules
