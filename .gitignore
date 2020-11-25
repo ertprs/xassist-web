@@ -14,3 +14,5 @@ dev/
 yarn-error.log
 .stylelintcache
 .env
+/node_modules
+/*/node_modules
