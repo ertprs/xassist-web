@@ -8,6 +8,7 @@ import { IContact } from '../Contact.interface'
 import Translation from '../util/Translation'
 import Client from '@src/Client';
 import Log from '@util/Log'
+import * as moment from 'moment';
 
 let rosterItemTemplate = require('../../template/roster-item.hbs')
 
@@ -19,7 +20,9 @@ export default class RosterItem {
       let template = rosterItemTemplate({
          jid: contact.getJid().bare,
          name: contact.getName(),
-         lastMessage: contact.getStatus()
+         lastMessage: contact.getStatus(),
+         date: this.getTimeStamp(contact.getLastMessageDate())
+         // unreadCount: contact.getNumberOfUnreadMessages()
       });
 
       this.element = $(template);
@@ -192,5 +195,23 @@ export default class RosterItem {
 
       inputElement.remove();
       this.element.find('.jsxc-bar__caption, .jsxc-menu').show();
+   }
+
+   private getTimeStamp(date) {
+      let timestamp = '';
+      const today = moment().startOf('day').format();
+      const yesterday = moment().startOf('day').add(-1, 'day').format();
+      if (date) {
+         if (moment(date).isSame(today, 'day')) {
+            timestamp = moment(date).format('hh:mm a');
+         } else if (moment(date).isSame(yesterday, 'day')) {
+            timestamp = 'yesterday';
+         } else {
+            timestamp = moment(date).format('DD/MM/YYYY');
+         }
+         return timestamp;
+      } else {
+         return timestamp;
+      }
    }
 }

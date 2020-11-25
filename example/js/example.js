@@ -14,9 +14,11 @@ let jsxc = new JSXC({
       if (status === CONNECTED || status === ATTACHED) {
          $('.logout').show();
          $('.submit').hide();
+         $('body').addClass('jsxc-fullscreen jsxc-two-columns')
       } else {
          $('.logout').hide();
          $('.submit').show();
+         $('body').removeClass('jsxc-fullscreen jsxc-two-columns')
       }
    }
 });
@@ -51,7 +53,9 @@ function subscribeToInstantLogin() {
 
       jsxc.start(url, jid, password)
          .then(function() {
-            console.log('>>> CONNECTION READY')
+            console.log('>>> CONNECTION READY');
+            console.log('loged in ');
+            
          }).catch(function(err) {
             console.log('>>> catch', err)
          })

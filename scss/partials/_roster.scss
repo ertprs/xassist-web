@@ -1,6 +1,7 @@
 #jsxc-roster {
-  background-color: $roster-bg;
-  border-left: 1px solid #e1e1e1;
+  // background-color: $roster-bg;
+  background-color: #101f38;
+  border-left: 1px solid #e9e9e9;
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -315,10 +316,9 @@ li.jsxc-hide-offline {
   list-style: none;
   margin: 0;
   overflow: hidden;
-  padding: 0;
-  padding-bottom: 15px;
   width: 100%;
   z-index: 85;
+  padding: 0 0 15px 0;
 
   &::after {
     display: block;

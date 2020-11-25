@@ -33,11 +33,6 @@
     "checking-blacklist": "node scripts/search-blacklist.js"
   },
   "husky": {
-    "hooks": {
-      "prepare-commit-msg": "node scripts/prepare-commit-msg.js HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn checking",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
