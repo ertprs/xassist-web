@@ -284,6 +284,15 @@
   }
 }
 
+#jsxc-roster {
+  display: block;
+}
+
+#jsxc-roster[data-presence="offline"] {
+  display: none;
+}
+
+
 #jsxc-roster[data-presence="offline"] li:not(.jsxc-offline-available) {
   opacity: 0.5;
 

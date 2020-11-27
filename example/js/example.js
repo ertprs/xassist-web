@@ -2,8 +2,8 @@ let jsxc = new JSXC({
    loadConnectionOptions: (username, password) => {
       return Promise.resolve({
          xmpp: {
-            url: $('#bosh-url').val(),
-            domain: $('#xmpp-domain').val(),
+            url: 'https://im.focuzar.com/bosh',
+            domain: 'im.focuzar.com',
          }
       });
    },
@@ -43,8 +43,8 @@ function watchLogoutButton() {
 
 function subscribeToInstantLogin() {
    $('#instant-login-form').submit(function(ev) {
-      var url = $('#bosh-url').val();
-      var domain = $('#xmpp-domain').val();
+      var url = 'https://im.focuzar.com/bosh';
+      var domain = 'im.focuzar.com';
 
       var username = $(this).find('[name="username"]').val();
       var password = $(this).find('[name="password"]').val();
@@ -63,3 +63,7 @@ function subscribeToInstantLogin() {
       return false;
    });
 }
+$('.signup-link').click(function() {
+   $('.signup-section').show();
+   $('.login-section').hide();
+});
