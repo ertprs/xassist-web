@@ -194,6 +194,20 @@
     }
   }
 }
+.jsxc-menu__button::before {
+  position: relative;
+  left: -12px;
+}
+.jsxc-roster-search {
+  background-image: url("../images/search.png");
+  background-repeat: no-repeat;
+  background-size: 80%;
+  content: " ";
+  display: inline-block;
+  height: 18px;
+  margin: 0 0px 0 0;
+  width: 23px;
+}
 
 .jsxc-roster-toggle {
   background-color: rgba(225, 225, 225, 1);
@@ -319,6 +333,7 @@ li.jsxc-hide-offline {
   width: 100%;
   z-index: 85;
   padding: 0 0 15px 0;
+  height: calc(100% - 200px);
 
   &::after {
     display: block;

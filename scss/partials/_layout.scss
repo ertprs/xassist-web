@@ -14,7 +14,6 @@ body.jsxc-fullscreen {
     .jsxc-window-item {
       bottom: 0;
       height: auto;
-      left: 0;
       margin: 0;
       position: fixed;
       right: 0;
@@ -351,7 +350,7 @@ body.jsxc-fullscreen.jsxc-two-columns {
       // }
 
       .jsxc-window-item {
-        right: 33%;
+        width: 33%;
       }
     }
   }

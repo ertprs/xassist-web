@@ -51,6 +51,7 @@ export default class Roster {
 
       //make sure css empty selector works
       $('.jsxc-js-notice-menu .jsxc-menu__button').text('');
+      $('.jsxc-js-notice-menu .jsxc-menu__button').addClass('moveleft');
 
       this.contactList = this.element.find('.jsxc-contact-list');
 
@@ -59,7 +60,7 @@ export default class Roster {
       this.registerToggleHandler();
 
       Menu.init(this.element.find('.jsxc-menu'));
-
+      
       ClientAvatar.get().addElement(this.element.find('.jsxc-bottom .jsxc-avatar'));
 
       this.initOptions();
@@ -153,12 +154,26 @@ export default class Roster {
    public refreshOwnPresenceIndicator() {
       let confirmedPresence = Client.getPresenceController().getCurrentPresence();
       let requestedPresence = Client.getPresenceController().getTargetPresence();
-      let presence = typeof requestedPresence === 'number' ? requestedPresence : confirmedPresence;
+      // let presence = typeof requestedPresence === 'number' ? requestedPresence : confirmedPresence;
 
-      let label = $('.jsxc-js-presence-menu .jsxc-' + Presence[presence]).text();
+      // let label = $('.jsxc-js-presence-menu .jsxc-' + Presence[presence]).text();
       let labelElement = this.element.find('.jsxc-js-presence-menu .jsxc-menu__button');
+      labelElement.attr('data-presence', Presence[confirmedPresence]);
 
-      labelElement.text(label);
+      
+      let accounts = Client.getAccountManager().getAccounts();
+      for (let account of accounts) {
+         let jid = account.getJID();
+         let name = jid.bare;
+         if(name) {
+            labelElement.text(name);
+         } else {
+            labelElement.text(account.getUid());
+         }
+      }
+      console.log('accounts',accounts);
+
+      // labelElement.text(label);
       this.element.attr('data-presence', Presence[confirmedPresence]);
 
       if (requestedPresence === confirmedPresence) {
