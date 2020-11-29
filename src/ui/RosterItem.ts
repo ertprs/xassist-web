@@ -22,7 +22,7 @@ export default class RosterItem {
          name: contact.getName(),
          lastMessage: contact.getStatus(),
          date: this.getTimeStamp(contact.getLastMessageDate())
-         // unreadCount: contact.getNumberOfUnreadMessages()
+         // unread: contact.getNumberOfUnreadMessages()
       });
 
       this.element = $(template);
@@ -31,6 +31,7 @@ export default class RosterItem {
       this.element.attr('data-presence', Presence[this.contact.getPresence()]);
       this.element.attr('data-subscription', this.contact.getSubscription());
       this.element.attr('data-date', this.contact.getLastMessageDate()?.toISOString());
+      this.element.attr('data-unread', this.contact.getTranscript().getNumberOfUnreadMessages());
 
       this.element.on('dragstart', (ev) => {
          (<any> ev.originalEvent).dataTransfer.setData('text/plain', contact.getJid().full);
@@ -105,6 +106,7 @@ export default class RosterItem {
 
       this.contact.registerHook('lastMessage', () => {
          this.element.attr('data-date', this.contact.getLastMessageDate()?.toISOString());
+         this.element.attr('data-unread', this.contact.getNumberOfUnreadMessages());
       });
 
       this.contact.getTranscript().registerNewMessageHook((firstMessageId) => {
@@ -121,7 +123,7 @@ export default class RosterItem {
          if (message.isSystem()) {
             return;
          }
-
+         console.log('unread count', this.contact.getNumberOfUnreadMessages());
          this.element.find('.jsxc-bar__caption__secondary').html(message.getPlaintextEmoticonMessage());
          this.element.find('.jsxc-bar__caption__secondary').attr('title', message.getPlaintextMessage());
       });
@@ -133,6 +135,13 @@ export default class RosterItem {
 
       let updateUnreadMessage = () => {
          let unreadMessages = this.contact.getTranscript().getNumberOfUnreadMessages();
+         if(unreadMessages > 0) {
+            this.element.find('.jsxc-bar__count').addClass('unread_count');
+            this.element.find('.jsxc-bar__count').text(unreadMessages);
+         } else {
+            this.element.find('.jsxc-bar__count').removeClass('unread_count');
+            this.element.find('.jsxc-bar__count').text('');
+         }
          if (unreadMessages > 0) {
             this.element.addClass('jsxc-bar--has-unread-msg');
          } else {

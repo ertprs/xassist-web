@@ -126,6 +126,7 @@ body.jsxc-fullscreen {
 
   .jsxc-send-area {
     padding: 0;
+    background: #E9E9E9 !important
   }
 
   .jsxc-send-area {
@@ -144,13 +145,15 @@ body.jsxc-fullscreen {
   }
 
   .jsxc-message-input {
-    background-color: #ececec;
-    border-radius: 2em;
+    background-color: #ffffff;
     line-height: 1.4em;
-    margin-right: 1em;
+    margin-right: 0px;
     padding: 0.6em 2em 0.4em;
+    margin-left: 10px;
   }
-
+  .jsxc-menu--emoticons {
+    margin-left: -53px;
+  }
   .jsxc-highlight .jsxc-window-bar {
     background-color: $window-bar-bg;
   }
@@ -195,6 +198,7 @@ body.jsxc-fullscreen.jsxc-two-columns {
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         padding: 0 20px;
+        height: 100vh;
         
         .jsxc-bar {
           border-bottom: 1px solid #ccc;
@@ -227,9 +231,11 @@ body.jsxc-fullscreen.jsxc-two-columns {
                   height: 18px;
                   border-radius: 50%;
                   line-height: 19px;
-                  background-color: #3cb678;
                   color: #ffffff;
                   text-align: center;
+                }
+                .unread_count {
+                  background-color: #3cb678;
                 }
               }
             }

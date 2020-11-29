@@ -44,6 +44,7 @@
   .jsxc-message-area {
     @extend %scrollbar;
     background-image: url("../images/resize_gray.svg");
+    background-color: #E9E9E9 !important;
     background-position: top left;
     background-repeat: no-repeat;
     display: flex;
@@ -811,4 +812,8 @@
     display: block;
     padding-top: 42px;
   }
+}
+
+.hidden_area {
+  display:none;
 }

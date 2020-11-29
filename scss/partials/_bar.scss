@@ -7,6 +7,8 @@
   padding: 0 3px;
   position: relative;
   width: 100%;
+  background: #E9E9E9 !important;
+  border-bottom: 1px solid #000000;
 
   &__action-entry {
     color: $tools-color;
@@ -95,5 +97,13 @@
     .jsxc-highlight & {
       background-color: #ffa500;
     }
+  }
+  .jsxc-name {
+    color: black
+  }
+
+  .right--section {
+    right: 20px;
+    position: absolute;
   }
 }
