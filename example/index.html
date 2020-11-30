@@ -63,52 +63,108 @@
                </form>
           </div>
           <div class="signup-section" style="display:none">
-              <div class="account-heading">Sign Up</div>
-              <div class="username">
-                  <div class="input-label">Username</div>
-                  <div class="login-input">
-                      <input type="text" value="john@gmail.com" />
-                      <img class="input-img" src="../images/mail-black.png">
-                  </div>
-              </div>
-              <div class="email">
-                  <div class="input-label">Email</div>
-                  <div class="login-input">
-                      <input type="text" value="john@gmail.com" />
-                      <img class="input-img" src="../images/mail-black.png">
-                  </div>
-              </div>
-              <div class="password">
-                  <div class="input-label">Password</div>
-                  <div class="login-input">
-                      <input type="password" value="Admin@123" />
-                      <img class="input-img" src="../images/pwd-black.png">
-                  </div>
-              </div>
-              <div class="re-enter-password">
-                  <div class="input-label">Re-Enter Password</div>
-                  <div class="login-input">
-                      <input type="password" value="Admin@123" />
-                      <img class="input-img" src="../images/pwd-black.png">
-                  </div>
-              </div>
-              <div class="terms-service">
-                  I agree to all the statements in <span class="terms-link">Terms of service</span>
-              </div>
-              <div class="button-holder">
-                  <button class="login-button pointer">
-                      Sign Up
-                      <img class="login-arrow" src="../images/down-arrow-white.png">
-                  </button>
-              </div>
+                <div class="account-heading">Sign Up</div>
+                <form id="signup-form" method="post" class="form form-horizontal">
+                    <div class="username">
+                        <div class="input-label">Username</div>
+                        <div class="login-input">
+                            <input type="text" value="" name="signup_username" id="signup_username" />
+                            <img class="input-img" src="../images/mail-black.png">
+                        </div>
+                    </div>
+                    <div class="email">
+                        <div class="input-label">Email</div>
+                        <div class="login-input">
+                            <input type="text" value="" name="signup_email" id="signup_email" />
+                            <img class="input-img" src="../images/mail-black.png">
+                        </div>
+                        <p class="signup-email-error error"></p>
+                    </div>
+                    <div class="otp" style="display: none" id="signup_otp_section">
+                        <div class="input-label">OTP</div>
+                        <div class="login-input">
+                            <input type="text" value="" name="signup_otp" id="signup_otp" />
+                            <img class="input-img" src="../images/mail-black.png">
+                        </div>
+                    </div>
+                    <div class="password">
+                        <div class="input-label">Password</div>
+                        <div class="login-input">
+                            <input type="password" value="" name="signup_password" id="signup_password" />
+                            <img class="input-img" src="../images/pwd-black.png">
+                        </div>
+                    </div>
+                    <div class="re-enter-password">
+                        <div class="input-label">Re-Enter Password</div>
+                        <div class="login-input">
+                            <input type="password" value="" name="signup_cpassword" id="signup_cpassword" />
+                            <img class="input-img" src="../images/pwd-black.png">
+                        </div>
+                        <p class="signup-cpassword-error error"></p>
+                    </div>
+                    <div class="terms-service">
+                        <input type="checkbox" name="agree" value="agree" id="agree" style="width: 20px;">
+                        <label for="agree">I agree to all the statements in <span class="terms-link">Terms of service</span></label>
+                    </div>
+                    <div class="button-holder">
+                        <button class="login-button pointer">
+                            Sign Up
+                            <img class="login-arrow" src="../images/down-arrow-white.png">
+                        </button>
+                        <span class="bcklogin">Back to Login</span>
+                    </div>
+                </form>
           </div>
+
+          <div class="resetpassword-section" style="display:none">
+            <div class="account-heading">Reset Password</div>
+            <form id="reset-form" method="post" class="form form-horizontal">
+                <div class="email">
+                    <div class="input-label">Email</div>
+                    <div class="login-input">
+                        <input type="text" value="" name="reset_email" id="reset_email" />
+                        <img class="input-img" src="../images/mail-black.png">
+                    </div>
+                    <p class="reset_email_error error"></p>
+                </div>
+                <div class="otp mt40" style="display: none" id="reset_otp_section">
+                    <div class="input-label">OTP</div>
+                    <div class="login-input">
+                        <input type="text" value="" name="reset_otp" id="reset_otp" />
+                        <img class="input-img" src="../images/mail-black.png">
+                    </div>
+                </div>
+                <div class="password mt40">
+                    <div class="input-label">Password</div>
+                    <div class="login-input">
+                        <input type="password" name="reset_password" id="reset_password" value="" />
+                        <img class="input-img" src="../images/pwd-black.png">
+                    </div>
+                </div>
+                <div class="re-enter-password mt40">
+                    <div class="input-label">Re-Enter Password</div>
+                    <div class="login-input">
+                        <input type="password" value="" name="reset_cpassword" id="reset_cpassword" />
+                        <img class="input-img" src="../images/pwd-black.png">
+                    </div>
+                    <p class="reset_cpassword_error error"></p>
+                </div>
+                <div class="button-holder mt40">
+                    <button class="login-button pointer">
+                        Reset Password
+                        <img class="login-arrow" src="../images/down-arrow-white.png">
+                    </button>
+                    <span class="bcklogin">Back to Login</span>
+                </div>
+            </form>
+        </div>
       </div>
       <div class="xassist-section">
           <div class="vcode-section">
               <div class="logo-container">
                   <img class="xassist-logo" src="../images/logo.png" />
               </div>
-              <div class="vcode-container">
+              <div class="vcode-container" style="display:none">
                   <div class="vcode-form">
                       <div class="vcode">
                           <div class="input-label">Connect</div>

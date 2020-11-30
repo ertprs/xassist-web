@@ -222,6 +222,7 @@ button {
 .login-container .account-section .button-holder .login-button {
 	width: 150px;
 	height: 40px;
+	cursor: pointer;
 }
 
 .login-container .account-section .button-holder .login-button .login-arrow {
@@ -270,13 +271,14 @@ button {
 	color: #305fa4;
 	font-size: 16px;
 	text-transform: uppercase;
+	cursor: pointer;
 }
 
-.login-container .account-section .signup-section {
+.login-container .account-section .signup-section, .resetpassword-section {
 	width: 100%;
 }
 
-.login-container .account-section .signup-section .login-input {
+.login-container .account-section .signup-section .login-input, .resetpassword-section .login-input {
 	position: relative;
 }
 
@@ -294,6 +296,19 @@ button {
 	cursor: pointer;
 	font-weight: 500;
 	text-decoration: underline;
+}
+.mt40 {
+	margin-top: 40px;
+}
+.bcklogin {
+	margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.error {
+	color: red;
 }
 
 @media only screen and (min-width: 768px) {
