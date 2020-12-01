@@ -83,6 +83,7 @@ $('.bcklogin').click(function() {
 
 
 $('#signup-form').submit(function() {
+   var url = '';
    var isFormValid = validateInput('signup-section');
    if (!isFormValid) { 
       return false;
@@ -94,6 +95,10 @@ $('#signup-form').submit(function() {
          var cpassword = $('#signup_cpassword').val();
          isFormValid = confirmPasswordValidation(password, cpassword, 'signup-cpassword-error');
          if(isFormValid) {
+            var data  = $( "#signup-form" ).serialize();
+            $.post(url, data).done(function( response ) {
+               console.log(response);
+            });
             return true;
          } else {
             return false;
@@ -105,6 +110,7 @@ $('#signup-form').submit(function() {
 });
 
 $('#reset-form').submit(function() {
+   var url ='';
    var isFormValid = validateInput('resetpassword-section');
    if (!isFormValid) { 
       return false;
@@ -116,6 +122,10 @@ $('#reset-form').submit(function() {
          var cpassword = $('#reset_cpassword').val();
          isFormValid = confirmPasswordValidation(password, cpassword, 'reset_cpassword_error');
          if(isFormValid) {
+            var data  = $( "#reset-form" ).serialize();
+            $.post(url, data).done(function( response ) {
+               console.log(response);
+            });
             return true;
          } else {
             return false;
@@ -126,6 +136,19 @@ $('#reset-form').submit(function() {
    }
 });
 
+function getOTP(section) {
+   var email = $('#'+section+'_email').val();
+   $('.'+section+'_otp_section').hide();
+   if ($.trim(email).length > 0){
+      var isValid = ValidateEmail(email, section+'_email_error');
+      if(isValid) {
+         $.post(url, { email: email }).done(function( response ) {
+            console.log(response);
+            $('.'+section+'_otp_section').show();
+         });
+      }
+   }
+}
 
 function validateInput(section) {
    var isFormValid = true;
@@ -147,6 +170,7 @@ function ValidateEmail(inputText, elementClass)
    if(inputText.match(mailformat))
    {
       $('.'+elementClass).hide();
+      $('.'+elementClass).text('');
       return true;
    }
    else
@@ -162,6 +186,7 @@ function confirmPasswordValidation(inputText, CinputText, elementClass)
    if(inputText === CinputText)
    {
       $('.'+elementClass).hide();
+      $('.'+elementClass).text('');
       return true;
    }
    else

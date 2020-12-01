@@ -328,18 +328,18 @@ div {
   }
 
   &.jsxc-video {
-    background-image: url("../images/camera_icon_white.svg");
+    background-image: url("../images/camera_icon_black.svg");
 
     &.jsxc-disabled {
-      background-image: url("../images/camera_disabled_icon_white.svg");
+      background-image: url("../images/camera_disabled_icon_black.svg");
     }
   }
 
   &.jsxc-audio {
-    background-image: url("../images/pick_up_white.svg");
+    background-image: url("../images/pick_up_black.svg");
 
     &.jsxc-disabled {
-      background-image: url("../images/pick_up_white_disabled.svg");
+      background-image: url("../images/pick_up_black_disabled.png");
     }
   }
 }

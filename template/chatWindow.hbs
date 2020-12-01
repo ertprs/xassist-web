@@ -27,6 +27,13 @@
 
             {{#> menu
                classes="jsxc-bar__action-entry jsxc-menu--drop-top-right jsxc-menu--light jsxc-menu-settings"
+               button-classes="jsxc-menu__more--light jsxc-icon jsxc-icon--ar-black jsxc-icon--clickable"}}
+               <li class="jsxc-clear"><div class="jsxc-bar__action-entry jsxc-disabled jsxc-audio"></div></li>
+               <li class="jsxc-share-screen"><div class="jsxc-bar__action-entry jsxc-disabled jsxc-video"></div></li>
+            {{/menu}}
+
+            {{#> menu
+               classes="jsxc-bar__action-entry jsxc-menu--drop-top-right jsxc-menu--light jsxc-menu-settings"
                button-classes="jsxc-menu__more--light jsxc-icon jsxc-icon--more-dark jsxc-icon--clickable"}}
                <li class="jsxc-clear">{{t "clear_history"}}</li>
                <li class="jsxc-share-screen">{{t "Share_screen"}}</li>
