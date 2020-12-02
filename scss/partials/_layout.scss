@@ -196,6 +196,11 @@ body.jsxc-fullscreen.jsxc-two-columns {
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         padding: 0 20px;
+
+        .jsxc-user-avatar {
+          width: 36px;
+          margin-right: 5px;
+        }
         
         .jsxc-bar {
           border-bottom: 1px solid #ccc;
@@ -220,7 +225,7 @@ body.jsxc-fullscreen.jsxc-two-columns {
                 font-size: 10px;
               }
               .jsxc-bar__unread {
-                display: flex;
+                display: none;
                 justify-content: flex-end;
                 .jsxc-bar__count {
                   font-size: 9px;
@@ -232,6 +237,9 @@ body.jsxc-fullscreen.jsxc-two-columns {
                   color: #ffffff;
                   text-align: center;
                 }
+              }
+              .show-unread {
+                display: flex;
               }
             }
           }
