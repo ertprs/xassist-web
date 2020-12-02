@@ -119,4 +119,8 @@ export default class ClientAvatar {
          AvatarSet.get(this.contact).addElement(element);
       }
    }
+
+   public getUsername() {
+      return this.storage;
+   }
 }

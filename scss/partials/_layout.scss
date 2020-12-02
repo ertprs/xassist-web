@@ -14,7 +14,6 @@ body.jsxc-fullscreen {
     .jsxc-window-item {
       bottom: 0;
       height: auto;
-      left: 0;
       margin: 0;
       position: fixed;
       right: 0;
@@ -127,6 +126,7 @@ body.jsxc-fullscreen {
 
   .jsxc-send-area {
     padding: 0;
+    background: #E9E9E9 !important
   }
 
   .jsxc-send-area {
@@ -145,13 +145,15 @@ body.jsxc-fullscreen {
   }
 
   .jsxc-message-input {
-    background-color: #ececec;
-    border-radius: 2em;
+    background-color: #ffffff;
     line-height: 1.4em;
-    margin-right: 1em;
+    margin-right: 0px;
     padding: 0.6em 2em 0.4em;
+    margin-left: 10px;
   }
-
+  .jsxc-menu--emoticons {
+    margin-left: -53px;
+  }
   .jsxc-highlight .jsxc-window-bar {
     background-color: $window-bar-bg;
   }
@@ -201,6 +203,7 @@ body.jsxc-fullscreen.jsxc-two-columns {
           width: 36px;
           margin-right: 5px;
         }
+        height: 100vh;
         
         .jsxc-bar {
           border-bottom: 1px solid #ccc;
@@ -233,9 +236,11 @@ body.jsxc-fullscreen.jsxc-two-columns {
                   height: 18px;
                   border-radius: 50%;
                   line-height: 19px;
-                  background-color: #3cb678;
                   color: #ffffff;
                   text-align: center;
+                }
+                .unread_count {
+                  background-color: #3cb678;
                 }
               }
               .show-unread {
@@ -359,7 +364,7 @@ body.jsxc-fullscreen.jsxc-two-columns {
       // }
 
       .jsxc-window-item {
-        right: 33%;
+        width: 33%;
       }
     }
   }

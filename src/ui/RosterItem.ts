@@ -123,7 +123,7 @@ export default class RosterItem {
          if (message.isSystem()) {
             return;
          }
-
+         console.log('unread count', this.contact.getNumberOfUnreadMessages());
          this.element.find('.jsxc-bar__caption__secondary').html(message.getPlaintextEmoticonMessage());
          this.element.find('.jsxc-bar__caption__secondary').attr('title', message.getPlaintextMessage());
       });
@@ -135,6 +135,13 @@ export default class RosterItem {
 
       let updateUnreadMessage = () => {
          let unreadMessages = this.contact.getTranscript().getNumberOfUnreadMessages();
+         if(unreadMessages > 0) {
+            this.element.find('.jsxc-bar__count').addClass('unread_count');
+            this.element.find('.jsxc-bar__count').text(unreadMessages);
+         } else {
+            this.element.find('.jsxc-bar__count').removeClass('unread_count');
+            this.element.find('.jsxc-bar__count').text('');
+         }
          if (unreadMessages > 0) {
             // this.element.addClass('jsxc-bar--has-unread-msg');
             this.element.find('.jsxc-bar__count').html(unreadMessages.toString());

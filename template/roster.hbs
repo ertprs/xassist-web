@@ -14,13 +14,14 @@
          <li data-presence="dnd" class="jsxc-dnd">{{t "dnd"}}</li>
          <li data-presence="offline" class="jsxc-offline">{{t "Offline"}}</li>
          {{/menu}}
-
+         <div class="jsxc-roster-search"></div>
          {{> menu classes="jsxc-menu--pushup jsxc-js-notice-menu" button-classes="jsxc-bounce"}}
 
-         {{> menu classes="jsxc-menu--pushup jsxc-js-main-menu" button-classes="jsxc-icon jsxc-icon--menu-dark jsxc-icon--clickable"}}
+         {{> menu classes="jsxc-menu--pushup jsxc-js-main-menu" button-classes="jsxc-icon jsxc-icon--more-dark jsxc-icon--clickable"}}
       </div>
+      
       <div class="jsxc-roster-toggle"></div>
-      <ul class="jsxc-contact-list" data-empty-list-label="{{t "Your_contact_list_is_empty"}}"
+      <ul class="jsxc-contact-list {{t "Offline"}}" data-empty-list-label="{{t "Your_contact_list_is_empty"}}"
          data-offline-hidden-label="{{t "Offline_contacts_are_hidden"}}"
          data-presence-offline-label="{{t "You_are_currently_offline"}}"></ul>
       <div class="jsxc-roster-tabs">

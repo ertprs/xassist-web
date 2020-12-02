@@ -17,183 +17,176 @@
 </head>
 
 <body>
-   <div class="container" id="content" role="main">
 
-      <div class="row">
-         <div class="col-xs-12">
-            <h1 class="page-header">JSXC <small>example</small></h1>
+   <div class="login-container">
+      <div class="account-section">
+          <div class="login-section">
+              <div class="account-heading">Log in</div>
+              <form id="watch-form" method="post" action="?" class="form form-horizontal">
+               
 
-            <div class="row">
-               <div class="col-md-6">
-                  <p>This example demonstrates different types of login methods for <a href="https://www.jsxc.org/">JSXC</a>. You find further information in our <a href="https://github.com/jsxc/jsxc/wiki">wiki</a>.</p>
-
-                  <p>You are testing JSXC in version <strong class="version"></strong>.</p>
-
-                  <p class="jsxc-org">You can use <strong>demo0</strong> to <strong>demo9</strong> with password <strong>demo0</strong> to <strong>demo9</strong> to test JSXC (XMPP domain: <strong>demo.jsxc.ch</strong>, BOSH url: <strong>/http-bind/</strong>).</p>
-
-                  <details>
-                    <summary>Advanced controls</summary>
-                     <p><a class="btn btn-danger" href="javascript:jsxc.deleteAllData()">Delete all Data</a>
-                        <a class="btn btn-default" href="javascript:jsxc.enableDebugMode()">Enable Debug Mode</a>
-                        <a class="btn btn-default" href="javascript:jsxc.disableDebugMode()">Disable Debug Mode</a></p>
-
-                     <p><a class="btn btn-default" href="javascript:$('body').removeClass('jsxc-fullscreen jsxc-two-columns')">Normal Layout</a>
-                        <a class="btn btn-default" href="javascript:$('body').addClass('jsxc-fullscreen jsxc-two-columns')">Two Columns Layout</a>
-                        <a class="btn btn-default" href="javascript:$('body').removeClass('jsxc-two-columns').addClass('jsxc-fullscreen')">Fullscreen Layout</a></p>
-                  </details>
-                </div>
-
-               <div class="form form-horizontal col-md-6">
-                  <div class="form-group">
-                     <label for="xmpp-domain" class="col-xs-4 control-label">XMPP domain:</label>
-                     <div class="col-xs-8">
-                        <input type="text" id="xmpp-domain" name="xmpp-domain" class="form-control" value="localhost" />
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <label for="bosh-url" class="col-xs-4 control-label">BOSH url:</label>
-                     <div class="col-xs-8">
-                        <input type="text" id="bosh-url" name="bosh-url" class="form-control" value="/http-bind/" />
-                        <p id="server-flash"></p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-
-      <div class="row">
-
-         <div class="col-xs-12 col-md-4">
-            <h3>Dual-Login</h3>
-
-            <p>You should use this method if you have already a login in your website.</p>
-
-            <form id="watch-form" method="post" action="?" class="form form-horizontal">
-               <fieldset>
-                  <div class="form-group">
-                     <label for="watch-username" class="col-xs-4 control-label">Username:</label>
-                     <div class="col-xs-8">
-                        <input type="text" id="watch-username" name="username" class="form-control" />
-                     </div>
-                  </div>
-
-                  <div class="form-group">
-                     <label for="watch-password" class="col-xs-4 control-label">Password:</label>
-                     <div class="col-xs-8">
-                        <input type="password" id="watch-password" name="password" class="form-control" />
-                     </div>
-                  </div>
-
-                  <div class="form-group">
-                     <div class="col-xs-offset-4 col-xs-8">
-                        <button type="submit" class="submit btn btn-primary">Log in chat and submit</button>
-                        <button type="button" class="logout btn btn-default" style="display:none;">Log out</button>
-                     </div>
-                  </div>
-
-               </fieldset>
-            </form>
-
-            <pre>&lt;form id="form"&gt;
-  &lt;input type="text" id="username" /&gt;
-  &lt;input type="password" id="password" /&gt;
-  &lt;input type="submit" value="Submit" /&gt;
-&lt;/form&gt;
-
-&lt;button id="logout"&gt;Logout&lt;/button&gt;</pre>
-
-            <pre>let jsxc = new JSXC();
-
-let formElement = $('#form');
-let usernameElement = $('#username');
-let passwordElement = $('#password');
-let logoutElement = $('#logout');
-
-function getSettings(username, password) {
-  return Promise.resolve({
-    xmpp: {
-      url: '/http-bind/',
-      domain: 'localhost',
-    }
-  });
-}
-
-jsxc.watchForm(formElement, usernameElement, passwordElement, getSettings);
-
-jsxc.watchLogoutClick(logoutElement);</pre>
-
-         </div>
-
-         <div class="col-xs-12 col-md-4">
-            <h3>Instant Login</h3>
-
-            <p>Do you want to login directly within your script? Choose this type.
-
-               <form id="instant-login-form" class="form form-horizontal">
-                  <fieldset>
-                     <div class="alert alert-warning col-xs-12" role="alert">
-                        <strong>Warning!</strong> Your username or password is wrong!
-                     </div>
-
-                     <div class="form-group">
-                        <label for="username2" class="col-xs-4 control-label">Username:</label>
-                        <div class="col-xs-8">
-                           <input type="text" name="username" id="username2" class="form-control" />
+                  <div class="email">
+                        <div  class="input-label"><label for="watch-username">Username</label></div>
+                        <div class="login-input">
+                           <input id="watch-username" name="username" type="text" value="" />
+                           <img class="input-img" src="../images/mail-black.png">
                         </div>
-                     </div>
-
-                     <div class="form-group">
-                        <label for="password2" class="col-xs-4 control-label">Password:</label>
-                        <div class="col-xs-8">
-                           <input type="password" name="password" id="password2" class="form-control" />
+                  </div>
+                  <div class="password">
+                        <div class="input-label"><label for="watch-password" >Password</label></div>
+                        <div class="login-input">
+                           <input id="watch-password" name="password" type="password" value="" />
+                           <img class="input-img" src="../images/pwd-black.png">
                         </div>
-                     </div>
-
-                     <div class="form-group">
-                        <div class="col-xs-offset-4 col-xs-8">
-                           <button type="submit" id="submit2" class="submit btn btn-primary" data-loading-text="Logging in...">Log in chat</button>
-                           <button type="button" class="logout btn btn-default">Log out</button>
+                  </div>
+                  <div class="other-actions">
+                        <div class="remember-me pointer">
+                           Remember me
                         </div>
-                     </div>
-                  </fieldset>
+                        <div class="forgot-password pointer">
+                           Forgot Password ?
+                        </div>
+                  </div>
+                  <div class="button-holder">
+                        <button class="submit login-button pointer">
+                           Log in
+                           <img class="login-arrow" src="../images/down-arrow-white.png">
+                        </button>
+                        <button type="button" class="logout login-button pointer" style="display:none;">Log out</button>
+                  </div>
+                  <div class="signup-message" >
+                        <div class="message">
+                           Don't have an Account ?
+                           <span class="signup-link">SIGN UP</span>
+                        </div>
+                  </div>
                </form>
+          </div>
+          <div class="signup-section" style="display:none">
+                <div class="account-heading">Sign Up</div>
+                <form id="signup-form" method="post" class="form form-horizontal">
+                    <div class="username">
+                        <div class="input-label">Username</div>
+                        <div class="login-input">
+                            <input type="text" value="" name="signup_username" id="signup_username" />
+                            <img class="input-img" src="../images/mail-black.png">
+                        </div>
+                    </div>
+                    <div class="email">
+                        <div class="input-label">Email</div>
+                        <div class="login-input">
+                            <input type="text" value="" name="signup_email" id="signup_email" />
+                            <img class="input-img" src="../images/mail-black.png">
+                        </div>
+                        <p class="signup-email-error error"></p>
+                    </div>
+                    <div class="otp" style="display: none" id="signup_otp_section">
+                        <div class="input-label">OTP</div>
+                        <div class="login-input">
+                            <input type="text" value="" name="signup_otp" id="signup_otp" />
+                            <img class="input-img" src="../images/mail-black.png">
+                        </div>
+                    </div>
+                    <div class="password">
+                        <div class="input-label">Password</div>
+                        <div class="login-input">
+                            <input type="password" value="" name="signup_password" id="signup_password" />
+                            <img class="input-img" src="../images/pwd-black.png">
+                        </div>
+                    </div>
+                    <div class="re-enter-password">
+                        <div class="input-label">Re-Enter Password</div>
+                        <div class="login-input">
+                            <input type="password" value="" name="signup_cpassword" id="signup_cpassword" />
+                            <img class="input-img" src="../images/pwd-black.png">
+                        </div>
+                        <p class="signup-cpassword-error error"></p>
+                    </div>
+                    <div class="terms-service">
+                        <input type="checkbox" name="agree" value="agree" id="agree" style="width: 20px;">
+                        <label for="agree">I agree to all the statements in <span class="terms-link">Terms of service</span></label>
+                    </div>
+                    <div class="button-holder">
+                        <button class="login-button pointer">
+                            Sign Up
+                            <img class="login-arrow" src="../images/down-arrow-white.png">
+                        </button>
+                        <span class="bcklogin">Back to Login</span>
+                    </div>
+                </form>
+          </div>
 
-               <pre>&lt;input type="text" id="username" /&gt;
-&lt;input type="password" id="password" /&gt;
-&lt;button id="submit"&gt;Log in&lt;/button&gt;</pre>
-
-               <pre>let jsxc = new JSXC();
-
-$('#submit').click(function(){
-  let username = $('#username').val();
-  let password = $('#password').val();
-
-  let url = '/http-bind/';
-  let jid = username + '@localhost';
-
-  jsxc.start(url, jid , password);
-});
-</pre>
-         </div>
-
-         <div class="col-xs-12 col-md-4">
-          <h3>Prelogin</h3>
-
-          <p>Attach to existing BOSH connection after JSXC was initialized.</p>
-
-          <pre>let jsxc = new JSXC();
-
-let url = '/http-bind/';
-let jid = 'username@localhost';
-let sid = 'YOUR_SID';
-let rid = 'YOUR_RID';
-
-jsxc.start(url, jid, sid, rid);</pre>
-       </div>
-
+          <div class="resetpassword-section" style="display:none">
+            <div class="account-heading">Reset Password</div>
+            <form id="reset-form" method="post" class="form form-horizontal">
+                <div class="email">
+                    <div class="input-label">Email</div>
+                    <div class="login-input">
+                        <input type="text" value="" name="reset_email" id="reset_email" />
+                        <img class="input-img" src="../images/mail-black.png">
+                    </div>
+                    <p class="reset_email_error error"></p>
+                </div>
+                <div class="otp mt40" style="display: none" id="reset_otp_section">
+                    <div class="input-label">OTP</div>
+                    <div class="login-input">
+                        <input type="text" value="" name="reset_otp" id="reset_otp" />
+                        <img class="input-img" src="../images/mail-black.png">
+                    </div>
+                </div>
+                <div class="password mt40">
+                    <div class="input-label">Password</div>
+                    <div class="login-input">
+                        <input type="password" name="reset_password" id="reset_password" value="" />
+                        <img class="input-img" src="../images/pwd-black.png">
+                    </div>
+                </div>
+                <div class="re-enter-password mt40">
+                    <div class="input-label">Re-Enter Password</div>
+                    <div class="login-input">
+                        <input type="password" value="" name="reset_cpassword" id="reset_cpassword" />
+                        <img class="input-img" src="../images/pwd-black.png">
+                    </div>
+                    <p class="reset_cpassword_error error"></p>
+                </div>
+                <div class="button-holder mt40">
+                    <button class="login-button pointer">
+                        Reset Password
+                        <img class="login-arrow" src="../images/down-arrow-white.png">
+                    </button>
+                    <span class="bcklogin">Back to Login</span>
+                </div>
+            </form>
+        </div>
       </div>
-   </div>
+      <div class="xassist-section">
+          <div class="vcode-section">
+              <div class="logo-container">
+                  <img class="xassist-logo" src="../images/logo.png" />
+              </div>
+              <div class="vcode-container" style="display:none">
+                  <div class="vcode-form">
+                      <div class="vcode">
+                          <div class="input-label">Connect</div>
+                          <div class="vcode-input">
+                              <input type="text" value="12IFUI6KG" />
+                          </div>
+                      </div>
+                      <button class="connect-btn pointer">
+                          Connect
+                      </button>
+                  </div>
+                  <div class="share-vcode">
+                      Your V-code
+                      <div class="vcode-badge">
+                          12IFUI6KG
+                          <img class="copy-icon pointer" src="../images/copy-blue.png">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
 
    <!-- only needed for the example script -->
