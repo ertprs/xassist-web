@@ -1,5 +1,4 @@
 node_modules
-*.zip
 *.zip.sig
 bower_components
 archives/
