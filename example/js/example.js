@@ -63,6 +63,34 @@ function subscribeToInstantLogin() {
       return false;
    });
 }
+function getEmail() {
+   var url = "https://imapi.focuzar.com/index.php";
+   var email = $('#watch-username').val();
+   // var password = $('#watch-password').val();
+   $('.login-button-btn').attr('disabled', true);
+   if(email) {
+      $.ajax({
+         url:'https://imapi.focuzar.com/index.php',
+         data: {"task": 'webgetvcode', email : email},
+         complete: function (response) {
+            console.log(response);
+            let jsonResponse = JSON.parse(response.responseText);
+            if(jsonResponse && jsonResponse.response) {
+               document.getElementById('watch-username').value= jsonResponse.response + "@im.focuzar.com";   
+               // document.getElementById('watch-password').value= password;   
+               // watchForm();
+               // $('#watch-form').submit();
+               $('.login-button-btn').attr('disabled', false);
+               return false;
+            }
+         },
+         error: function () {
+            console.log(error);
+         },
+     });
+   }
+}
+
 $('.signup-link').click(function() {
    $('.signup-section').show();
    $('.login-section').hide();
@@ -83,7 +111,7 @@ $('.bcklogin').click(function() {
 
 
 $('#signup-form').submit(function() {
-   var url = '';
+   var url = 'https://imapi.focuzar.com/index.php';
    var isFormValid = validateInput('signup-section');
    if (!isFormValid) { 
       return false;
@@ -93,6 +121,8 @@ $('#signup-form').submit(function() {
       if(isFormValid) {
          var password = $('#signup_password').val();
          var cpassword = $('#signup_cpassword').val();
+         var user = new Date().getMilliseconds();
+         $('#user_vcode').val(user);
          isFormValid = confirmPasswordValidation(password, cpassword, 'signup-cpassword-error');
          if(isFormValid) {
             var data  = $( "#signup-form" ).serialize();
@@ -137,14 +167,15 @@ $('#reset-form').submit(function() {
 });
 
 function getOTP(section) {
+   var url = 'https://imapi.focuzar.com/index.php';
    var email = $('#'+section+'_email').val();
    $('.'+section+'_otp_section').hide();
    if ($.trim(email).length > 0){
       var isValid = ValidateEmail(email, section+'_email_error');
       if(isValid) {
-         $.post(url, { email: email }).done(function( response ) {
+         $.post(url, { email: email, task: 'sendotp' }).done(function( response ) {
             console.log(response);
-            $('.'+section+'_otp_section').show();
+            $('#'+section+'_otp_section').show();
          });
       }
    }

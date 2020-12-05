@@ -28,7 +28,7 @@
                   <div class="email">
                         <div  class="input-label"><label for="watch-username">Username</label></div>
                         <div class="login-input">
-                           <input id="watch-username" name="username" type="text" value="" />
+                           <input id="watch-username"  onblur="getEmail()"  name="username" type="text" value="" />
                            <img class="input-img" src="../images/mail-black.png">
                         </div>
                   </div>
@@ -48,7 +48,7 @@
                         </div>
                   </div>
                   <div class="button-holder">
-                        <button class="submit login-button pointer">
+                        <button class="submit login-button pointer login-button-btn">
                            Log in
                            <img class="login-arrow" src="../images/down-arrow-white.png">
                         </button>
@@ -68,14 +68,14 @@
                     <div class="username">
                         <div class="input-label">Username</div>
                         <div class="login-input">
-                            <input type="text" value="" name="signup_username" id="signup_username" />
+                            <input type="text" value="" name="name" id="signup_username" />
                             <img class="input-img" src="../images/mail-black.png">
                         </div>
                     </div>
                     <div class="email">
                         <div class="input-label">Email</div>
                         <div class="login-input">
-                            <input type="text" value="" name="signup_email" id="signup_email" />
+                            <input type="text" value="" onblur="getOTP('signup')" name="email" id="signup_email" />
                             <img class="input-img" src="../images/mail-black.png">
                         </div>
                         <p class="signup-email-error error"></p>
@@ -83,14 +83,14 @@
                     <div class="otp" style="display: none" id="signup_otp_section">
                         <div class="input-label">OTP</div>
                         <div class="login-input">
-                            <input type="text" value="" name="signup_otp" id="signup_otp" />
+                            <input type="text" value="" name="otp" id="signup_otp" />
                             <img class="input-img" src="../images/mail-black.png">
                         </div>
                     </div>
                     <div class="password">
                         <div class="input-label">Password</div>
                         <div class="login-input">
-                            <input type="password" value="" name="signup_password" id="signup_password" />
+                            <input type="password" value="" name="password" id="signup_password" />
                             <img class="input-img" src="../images/pwd-black.png">
                         </div>
                     </div>
@@ -107,6 +107,9 @@
                         <label for="agree">I agree to all the statements in <span class="terms-link">Terms of service</span></label>
                     </div>
                     <div class="button-holder">
+                        <input type="hidden" name="user" value="" id="user_vcode">
+                        <input type="hidden" name="task" value="webregister" />
+                        <input type="hidden" name="host" value="im.focuzar.com" />
                         <button class="login-button pointer">
                             Sign Up
                             <img class="login-arrow" src="../images/down-arrow-white.png">
@@ -122,7 +125,7 @@
                 <div class="email">
                     <div class="input-label">Email</div>
                     <div class="login-input">
-                        <input type="text" value="" name="reset_email" id="reset_email" />
+                        <input type="text" value="" onblur="getOTP('reset')" name="email" id="reset_email" />
                         <img class="input-img" src="../images/mail-black.png">
                     </div>
                     <p class="reset_email_error error"></p>
@@ -130,14 +133,14 @@
                 <div class="otp mt40" style="display: none" id="reset_otp_section">
                     <div class="input-label">OTP</div>
                     <div class="login-input">
-                        <input type="text" value="" name="reset_otp" id="reset_otp" />
+                        <input type="text" value="" name="otp" id="reset_otp" />
                         <img class="input-img" src="../images/mail-black.png">
                     </div>
                 </div>
                 <div class="password mt40">
                     <div class="input-label">Password</div>
                     <div class="login-input">
-                        <input type="password" name="reset_password" id="reset_password" value="" />
+                        <input type="password" name="newpass" id="reset_password" value="" />
                         <img class="input-img" src="../images/pwd-black.png">
                     </div>
                 </div>
@@ -150,6 +153,8 @@
                     <p class="reset_cpassword_error error"></p>
                 </div>
                 <div class="button-holder mt40">
+                    <input type="hidden" name="task" value="webchangepassword" />
+                    <input type="hidden" name="host" value="im.focuzar.com" />
                     <button class="login-button pointer">
                         Reset Password
                         <img class="login-arrow" src="../images/down-arrow-white.png">
