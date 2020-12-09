@@ -31,7 +31,6 @@ function watchForm() {
    let formElement = $('#watch-form');
    let usernameElement = $('#watch-username');
    let passwordElement = $('#watch-password');
-
    jsxc.watchForm(formElement, usernameElement, passwordElement);
 }
 
@@ -119,48 +118,63 @@ $('#signup-form').submit(function() {
       var emailValue = $('#signup_email').val();
       isFormValid = ValidateEmail(emailValue, 'signup-email-error'); 
       if(isFormValid) {
+         $('#signup-section-email-error').text('');
          var password = $('#signup_password').val();
          var cpassword = $('#signup_cpassword').val();
          var user = new Date().getMilliseconds();
          $('#user_vcode').val(user);
          isFormValid = confirmPasswordValidation(password, cpassword, 'signup-cpassword-error');
          if(isFormValid) {
+            $('#signup-section-cpassword-error').text('');
             var data  = $( "#signup-form" ).serialize();
             $.post(url, data).done(function( response ) {
                console.log(response);
             });
             return true;
          } else {
+            $('#signup-section-cpassword-error').text('Password miss matched');
             return false;
          }
       } else {
+         $('#signup-section-email-error').text('Email Format is Wrong');
          return false;
       }
    }
 });
 
 $('#reset-form').submit(function() {
-   var url ='';
+   var url ='https://imapi.focuzar.com/index.php';
    var isFormValid = validateInput('resetpassword-section');
    if (!isFormValid) { 
       return false;
    } else {
-      var emailValue = $('#reset_email').val();
+      var emailValue = $('#resetpassword_email').val();
       isFormValid = ValidateEmail(emailValue, 'reset_email_error'); 
       if(isFormValid) {
+         $('#resetpassword-section-email-error').text('');
          var password = $('#reset_password').val();
          var cpassword = $('#reset_cpassword').val();
          isFormValid = confirmPasswordValidation(password, cpassword, 'reset_cpassword_error');
          if(isFormValid) {
+            $('#resetpassword-section-cpassword-error').text('');
             var data  = $( "#reset-form" ).serialize();
             $.post(url, data).done(function( response ) {
                console.log(response);
+               if(response.response == 'Success') {
+                  window.location.reload();
+               } else {
+                  $('#resetpassword-error').text(response.response);
+               }
+               return true;
             });
-            return true;
+            return false;
+            
          } else {
+            $('#resetpassword-section-cpassword-error').text('Password miss matched');
             return false;
          }
       } else {
+         $('#resetpassword-section-email-error').text('Invalid Email Address');
          return false;
       }
    }
@@ -173,23 +187,46 @@ function getOTP(section) {
    if ($.trim(email).length > 0){
       var isValid = ValidateEmail(email, section+'_email_error');
       if(isValid) {
+         $('#'+section+'-section-email-error').text('');
          $.post(url, { email: email, task: 'sendotp' }).done(function( response ) {
             console.log(response);
             $('#'+section+'_otp_section').show();
          });
+      } else {
+         $('#'+section+'-section-email-error').text('Invalid Email Address');
       }
    }
 }
 
 function validateInput(section) {
    var isFormValid = true;
+   var letters = /^[A-Za-z]+$/;
    $("."+ section + " input").each(function(){
-      if ($.trim($(this).val()).length == 0){
+      var errorId = $(this).data('section');
+      var inputVal = $.trim($(this).val());
+      if (inputVal.length == 0){
          $(this).addClass("highlight");
+         if(errorId == 'username') {
+            $('#'+section+'-'+errorId+'-error').text('Please Enter Valid Username');
+         } else if(errorId=='email') {
+            $('#'+section+'-'+errorId+'-error').text('Please Enter Valid Email');
+         } else if(errorId=='password') {
+            $('#'+section+'-'+errorId+'-error').text('Please Enter Valid Password');
+         } else if(errorId=='cpassword') {
+            $('#'+section+'-'+errorId+'-error').text('Please Enter Valid Password');
+         } else if(errorId=='otp') {
+            $('#'+section+'-'+errorId+'-error').text('Please Enter Valid OTP');
+         } else {
+            $('#'+section+'-'+errorId+'-error').text('please enter value');
+         }
+         isFormValid = false;
+      } else if(errorId == 'username' && !inputVal.match(letters)) {
+         $('#'+section+'-'+errorId+'-error').text('Username Only Accepts Alphabets');
          isFormValid = false;
       }
       else{
          $(this).removeClass("highlight");
+         $('#'+section+'-'+errorId+'-error').text('');
       }
   });
   return isFormValid;

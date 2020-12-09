@@ -22,7 +22,7 @@
       <div class="account-section">
           <div class="login-section">
               <div class="account-heading">Log in</div>
-              <form id="watch-form" method="post" action="?" class="form form-horizontal">
+              <form id="watch-form" method="post"  autocomplete="off" action="?" class="form form-horizontal">
                
 
                   <div class="email">
@@ -31,6 +31,7 @@
                            <input id="watch-username"  onblur="getEmail()"  name="username" type="text" value="" />
                            <img class="input-img" src="../images/mail-black.png">
                         </div>
+                        <p id="login-username-error" class="error"></p>
                   </div>
                   <div class="password">
                         <div class="input-label"><label for="watch-password" >Password</label></div>
@@ -38,6 +39,7 @@
                            <input id="watch-password" name="password" type="password" value="" />
                            <img class="input-img" src="../images/pwd-black.png">
                         </div>
+                        <p id="login-password-error" class="error"></p>
                   </div>
                   <div class="other-actions">
                         <div class="remember-me pointer">
@@ -64,48 +66,52 @@
           </div>
           <div class="signup-section" style="display:none">
                 <div class="account-heading">Sign Up</div>
-                <form id="signup-form" method="post" class="form form-horizontal">
+                <form id="signup-form"  autocomplete="off" method="post" class="form form-horizontal">
                     <div class="username">
                         <div class="input-label">Username</div>
                         <div class="login-input">
-                            <input type="text" value="" name="name" id="signup_username" />
+                            <input type="text" value="" data-section="username" name="name" id="signup_username" />
                             <img class="input-img" src="../images/mail-black.png">
                         </div>
+                        <p id="signup-section-username-error" class="error"></p>
                     </div>
                     <div class="email">
                         <div class="input-label">Email</div>
                         <div class="login-input">
-                            <input type="text" value="" onblur="getOTP('signup')" name="email" id="signup_email" />
+                            <input type="text" data-section="email" value="" onblur="getOTP('signup')" name="email" id="signup_email" />
                             <img class="input-img" src="../images/mail-black.png">
                         </div>
-                        <p class="signup-email-error error"></p>
+                        <p id="signup-section-email-error" class="signup-email-error error"></p>
                     </div>
                     <div class="otp" style="display: none" id="signup_otp_section">
                         <div class="input-label">OTP</div>
                         <div class="login-input">
-                            <input type="text" value="" name="otp" id="signup_otp" />
+                            <input data-section="otp" type="text" value="" name="otp" id="signup_otp" />
                             <img class="input-img" src="../images/mail-black.png">
                         </div>
+                        <p id="signup-section-otp-error" class="error"></p>
                     </div>
                     <div class="password">
                         <div class="input-label">Password</div>
                         <div class="login-input">
-                            <input type="password" value="" name="password" id="signup_password" />
+                            <input type="password" data-section="password" value="" name="password" id="signup_password" />
                             <img class="input-img" src="../images/pwd-black.png">
                         </div>
+                        <p id="signup-section-password-error" class="error"></p>
                     </div>
                     <div class="re-enter-password">
                         <div class="input-label">Re-Enter Password</div>
                         <div class="login-input">
-                            <input type="password" value="" name="signup_cpassword" id="signup_cpassword" />
+                            <input type="password" data-section="cpassword" value="" name="signup_cpassword" id="signup_cpassword" />
                             <img class="input-img" src="../images/pwd-black.png">
                         </div>
-                        <p class="signup-cpassword-error error"></p>
+                        <p id="signup-section-cpassword-error" class="signup-cpassword-error error"></p>
                     </div>
                     <div class="terms-service">
-                        <input type="checkbox" name="agree" value="agree" id="agree" style="width: 20px;">
+                        <input type="checkbox" name="agree" data-section="agree" value="agree" id="agree" style="width: 20px;">
                         <label for="agree">I agree to all the statements in <span class="terms-link">Terms of service</span></label>
                     </div>
+                    <p id="signup-section-agree-error" class="signup-agree-error error"></p>
                     <div class="button-holder">
                         <input type="hidden" name="user" value="" id="user_vcode">
                         <input type="hidden" name="task" value="webregister" />
@@ -121,37 +127,40 @@
 
           <div class="resetpassword-section" style="display:none">
             <div class="account-heading">Reset Password</div>
-            <form id="reset-form" method="post" class="form form-horizontal">
+            <form id="reset-form" method="post"  autocomplete="off" class="form form-horizontal">
                 <div class="email">
                     <div class="input-label">Email</div>
                     <div class="login-input">
-                        <input type="text" value="" onblur="getOTP('reset')" name="email" id="reset_email" />
+                        <input type="text" value="" data-section="email" onblur="getOTP('resetpassword')" name="email" id="resetpassword_email" />
                         <img class="input-img" src="../images/mail-black.png">
                     </div>
-                    <p class="reset_email_error error"></p>
+                    <p id="resetpassword-section-email-error" class="reset_email_error error"></p>
                 </div>
-                <div class="otp mt40" style="display: none" id="reset_otp_section">
+                <div class="otp mt40" style="display: none" id="resetpassword_otp_section">
                     <div class="input-label">OTP</div>
                     <div class="login-input">
-                        <input type="text" value="" name="otp" id="reset_otp" />
+                        <input type="text" value="" name="otp" data-section="otp" id="reset_otp" />
                         <img class="input-img" src="../images/mail-black.png">
                     </div>
+                    <p id="resetpassword-section-otp-error" class="error"></p>
                 </div>
                 <div class="password mt40">
                     <div class="input-label">Password</div>
                     <div class="login-input">
-                        <input type="password" name="newpass" id="reset_password" value="" />
+                        <input type="password" name="newpass" data-section="password" id="reset_password" value="" />
                         <img class="input-img" src="../images/pwd-black.png">
                     </div>
+                    <p id="resetpassword-section-password-error" class="error"></p>
                 </div>
                 <div class="re-enter-password mt40">
                     <div class="input-label">Re-Enter Password</div>
                     <div class="login-input">
-                        <input type="password" value="" name="reset_cpassword" id="reset_cpassword" />
+                        <input type="password" value="" data-section="cpassword" name="reset_cpassword" id="reset_cpassword" />
                         <img class="input-img" src="../images/pwd-black.png">
                     </div>
-                    <p class="reset_cpassword_error error"></p>
+                    <p id="resetpassword-section-cpassword-error" class="reset_cpassword_error error"></p>
                 </div>
+                <p id="resetpassword-error" class="error"></p>
                 <div class="button-holder mt40">
                     <input type="hidden" name="task" value="webchangepassword" />
                     <input type="hidden" name="host" value="im.focuzar.com" />
@@ -161,6 +170,7 @@
                     </button>
                     <span class="bcklogin">Back to Login</span>
                 </div>
+                
             </form>
         </div>
       </div>
